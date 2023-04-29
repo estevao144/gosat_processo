@@ -14,9 +14,26 @@ class EmprestimoController extends Controller
             'cpf' => $cpf,
         ]
     ]);
-
+    
     $data = json_decode($response->getBody(), true);
+    
+    
+    $instituicao_id = $data['instituicoes'][1]['id'];
+    $codModalidade = $data['instituicoes'][1]['modalidades'][0]['cod'];
 
-    return view('simulacao', ['data' => $data]);
+    $response1 = $client->post('https://dev.gosat.org/api/v1/simulacao/oferta', [
+        'json' => [
+            'cpf' => $cpf,
+            'instituicao_id' => $instituicao_id,
+            'codModalidade' => $codModalidade,  
+        ]
+    ]);
+
+    $data1 = json_decode($response1->getBody(), true);
+
+    return view('simulacao', ['cpf' => $cpf, 'data' => $data, 'data1' => $data1]);
 }
+
+
+
 }
