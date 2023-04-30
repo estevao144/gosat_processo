@@ -9,6 +9,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $cpf = $request->input('cpf');
+        session(['cpf' => $cpf]);
         return redirect('/simulacao/' . $cpf);
     }
 }

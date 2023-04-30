@@ -11,12 +11,18 @@
 
 <body>
     <h1>Simulação</h1>
-    <p>A melhor Simulação de todas!</p>
-    <h1>Proposta</h1>
-    <p>Quantidade mínima de parcelas: {{ $QntParcelaMin }}</p>
-    <p>Quantidade máxima de parcelas: {{ $QntParcelaMax }}</p>
-    <p>Valor mínimo: {{ $valorMin }}</p>
-    <p>Valor máximo: {{ $valorMax }}</p>
-    <p>Juros por mês: {{ $jurosMes }}</p>
+    <p>Aqui todas as condições disponiveis.</p>
+
+    @foreach($ofertasTratadas as $oferta)
+    <p>Instituição Financeira: {{ $oferta['instituicaoFinanceira'] }}</p>
+    <p>Valor a Pagar: {{ $oferta['valorAPagar'] }}</p>
+    <p>Valor Solicitado: {{ $oferta['valorSolicitado'] }}</p>
+    <p>Taxa de Juros: {{ $oferta['taxaJuros'] }}</p>
+    <p>Quantidade de Parcelas: {{ $oferta['qntParcelas'] }}</p>
+    <p> ----------------------------------</p>
+@endforeach
+   
+
+
 
 </body>

@@ -18,6 +18,5 @@
     <input type="text" name="cpf" placeholder="Digite seu CPF">
     <button type="submit">Simular</button>
 </form>
-
     </body>
 </html>

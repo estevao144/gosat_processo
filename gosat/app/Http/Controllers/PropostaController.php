@@ -4,20 +4,43 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
+
+
 class PropostaController extends Controller
 {
     public function index(Request $request)
- 
     {   
-        $QntParcelaMin = $request->input('QntParcelaMin');
-        $QntParcelaMax = $request->input('QntParcelaMax');
-        $valorMin = $request->input('valorMin');
-        $valorMax = $request->input('valorMax');
-        $jurosMes = $request->input('jurosMes');
+        $cpf = $request->session()->get('cpf');
+        $ofertas = $request->session()->get('ofertas');
+        $instituicoes = $request->session()->get('instituicoes');
+        
 
-        echo $QntParcelaMin;
+        usort($ofertas, function($a, $b) {
+            return $a['jurosMes'] <=> $b['jurosMes'];
+        });
+        
+        $ofertasTratadas = [];
+        
+        // Percorre as ofertas e cria um novo array com os dados tratados
+        foreach ($ofertas as $key => $oferta) {
+            $instituicao = $instituicoes[$key]['nome_instituicao'];
+            $valorAPagar = number_format($oferta['valorMax'] / $oferta['QntParcelaMax'], 2, ',', '.');
+            $valorSolicitado = number_format($oferta['valorMax'], 2, ',', '.');
+            $taxaJuros = number_format($oferta['jurosMes'] * 100, 2, ',', '.').'%';
+            $qntParcelas = $oferta['QntParcelaMax'];
+        
+            $ofertasTratadas[] = [
+                'instituicaoFinanceira' => $instituicao,
+                'valorAPagar' => $valorAPagar,
+                'valorSolicitado' => $valorSolicitado,
+                'taxaJuros' => $taxaJuros,
+                'qntParcelas' => $qntParcelas,
+            ];
+        }
 
-        return view('propostas', ['QntParcelaMin' => $QntParcelaMin, 'QntParcelaMax' => $QntParcelaMax, 'valorMin' => $valorMin, 'valorMax' => $valorMax, 'jurosMes' => $jurosMes]);
+      print_r($ofertasTratadas);
+
+        return view('propostas', ['ofertasTratadas' => $ofertasTratadas]);
     }
     
 }
