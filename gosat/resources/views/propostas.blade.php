@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Simulações</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 <script>
     function redirect () {
@@ -19,12 +20,15 @@
     <p>Aqui todas as condições disponiveis.</p>
 
     @foreach($ofertasTratadas as $oferta)
-    <p>Instituição Financeira: {{ $oferta['instituicaoFinanceira'] }}</p>
-    <p>Valor a Pagar: {{ $oferta['valorAPagar'] }}</p>
-    <p>Valor Solicitado: {{ $oferta['valorSolicitado'] }}</p>
-    <p>Taxa de Juros: {{ $oferta['taxaJuros'] }}</p>
-    <p>Quantidade de Parcelas: {{ $oferta['qntParcelas'] }}</p>
-    <p> ----------------------------------</p>
+    <div class="container_results">
+    <div>
+    <div class="results">Instituição Financeira: {{ $oferta['instituicaoFinanceira'] }}</div>
+    <div class="results">Valor a Pagar: {{ $oferta['valorAPagar'] }}</div>
+    <div class="results">Valor Solicitado: {{ $oferta['valorSolicitado'] }}</div>
+    <div class="results">Taxa de Juros: {{ $oferta['taxaJuros'] }}</div>
+    <div class="results">Quantidade de Parcelas: {{ $oferta['qntParcelas'] }}</div>
+    </div>
+    </div>
 @endforeach
 
 <button

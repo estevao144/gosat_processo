@@ -8,6 +8,7 @@
 </script>
 
 <head>
+<link rel="stylesheet" href="{{ asset('style.css') }}">
     <meta charset="UTF-8">
     <title>Simulação</title>
 </head>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Simulações</title>
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 <script>
     function redirect() {
