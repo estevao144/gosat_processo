@@ -9,8 +9,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias e métodos:
 * <a href="https://www.javascript.com/">JavaScript</a>
 * <a href="https://www.docker.com/">Docker Compose</a>
 
-* Mocks
-
 # 💻 Projeto #
 O projeto foi desenvolvido para o processo seletivo da gosat, onde foi desenvolvido um sistema de simulação de financiamentos, onde o usuário pode simular um financiamento de acordo com o valor que precisa, valor da entrada, quantidade de parcelas e taxa de juros. 
 
