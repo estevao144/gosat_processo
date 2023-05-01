@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('ofertas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('cpf', 11);
+            $table->string('instituicaoFinanceira', 255);
+            $table->decimal('valorAPagar', 10, 2);
+            $table->decimal('valorSolicitado', 10, 2);
+            $table->decimal('taxaJuros', 5, 2);
+            $table->integer('qntParcelas');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('ofertas');
     }
 };
