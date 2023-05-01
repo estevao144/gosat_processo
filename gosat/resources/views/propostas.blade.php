@@ -6,7 +6,12 @@
     <title>Simulações</title>
 </head>
 <script>
+    function redirect () {
+        window.location.href = "http://localhost:8000/salvarPropostas";
 
+    }
+
+    
 </script>
 
 <body>
@@ -21,6 +26,11 @@
     <p>Quantidade de Parcelas: {{ $oferta['qntParcelas'] }}</p>
     <p> ----------------------------------</p>
 @endforeach
+
+<button
+    onclick=redirect()
+    >Salvar</button>
+
    
 
 

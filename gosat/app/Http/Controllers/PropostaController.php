@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use App\Models\OfertaModel;
 
 
 
@@ -37,9 +38,7 @@ class PropostaController extends Controller
                 'qntParcelas' => $qntParcelas,
             ];
         }
-
-      print_r($ofertasTratadas);
-
+        session(['ofertasTratadas' => $ofertasTratadas]);
         return view('propostas', ['ofertasTratadas' => $ofertasTratadas]);
     }
     
